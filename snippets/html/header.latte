@@ -1,0 +1,13 @@
+{parameters
+    string $url,
+    string $logo,
+}
+
+<tr>
+    <td class="header">
+        <a href="{$url}" style="display: inline-block;" n:tag-if="$url">
+            <img class="logo" src="{$logo}" alt="" n:if="$logo">
+            {block content}{/block}
+        </a>
+    </td>
+</tr>

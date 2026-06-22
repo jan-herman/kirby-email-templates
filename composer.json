@@ -1,0 +1,35 @@
+{
+    "name": "jan-herman/kirby-email-templates",
+    "description": "Reusable Laravel-inspired Latte email templates for Kirby.",
+    "version": "1.0.0",
+    "type": "kirby-plugin",
+    "license": "MIT",
+    "homepage": "https://github.com/jan-herman/kirby-email-templates",
+    "authors": [
+        {
+            "name": "Jan Herman",
+            "email": "mail@janherman.com",
+            "homepage": "https://janherman.com"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "getkirby/composer-installer": "^1.2",
+        "tijsverkoyen/css-to-inline-styles": "^2.4",
+        "jan-herman/kirby-barista": "^1.14"
+    },
+    "extra": {
+        "installer-name": "email-templates"
+    },
+    "config": {
+        "allow-plugins": {
+            "getkirby/composer-installer": true
+        },
+        "optimize-autoloader": true
+    },
+    "autoload": {
+        "psr-4": {
+            "JanHerman\\EmailTemplates\\": "lib/"
+        }
+    }
+}

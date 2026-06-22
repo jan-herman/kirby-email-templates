@@ -1,0 +1,95 @@
+{var $lang      = option('jan-herman.email-templates.lang')}
+{var $logo      = option('jan-herman.email-templates.logo')}
+{var $siteTitle = option('jan-herman.email-templates.siteTitle')}
+{var $siteUrl   = option('jan-herman.email-templates.siteUrl')}
+{var $theme     = option('jan-herman.email-templates.theme')}
+
+{var $lang      = is_callable($lang) ? call_user_func($lang) : $lang}
+{var $logo      = is_callable($logo) ? call_user_func($logo) : $logo}
+{var $siteTitle = is_callable($siteTitle) ? call_user_func($siteTitle) : $siteTitle}
+{var $siteUrl   = is_callable($siteUrl) ? call_user_func($siteUrl) : $siteUrl}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{block lang}{$lang}{/block}">
+<head>
+
+    <title>{block title}{$siteTitle}{/block}</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="color-scheme" content="light">
+    <meta name="supported-color-schemes" content="light">
+
+    <style data-no-inline>
+        @media only screen and (max-width: 600px) {
+            .inner-body {
+                width: 100% !important;
+            }
+
+            .footer {
+                width: 100% !important;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .button {
+                width: 100% !important;
+            }
+        }
+    </style>
+
+    {var $themeCss = call_user_func('email_templates_theme_css', $theme)}
+    <style n:if="$themeCss">
+        {$themeCss|noescape}
+    </style>
+
+    {block head}{/block}
+
+</head>
+<body>
+    <table class="wrapper" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+        <tr>
+            <td align="center">
+                <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
+
+                    {* Email header *}
+                    {block header}
+                        {embed '@snippets/email/html/header', logo: $logo, url: $siteUrl}
+                            {block content}
+                                {$siteTitle}
+                            {/block}
+                        {/embed}
+                    {/block}
+
+                    {* Email body *}
+                    <tr>
+                        <td class="body" width="100%" cellpadding="0" cellspacing="0" style="border: hidden !important;">
+                            <table class="inner-body" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
+                                {* Body content *}
+                                <tr>
+                                    <td class="content-cell">
+                                        {block content}{/block}
+                                        {block subcopy}{/block}
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    {* Email footer *}
+                    {block footer}
+                        {embed '@snippets/email/html/footer'}
+                            {block content}
+                                <p>
+                                    &copy; {date('Y')} {$siteTitle}. {_'email.allRightsReserved', fallback: 'All rights reserved.'}
+                                </p>
+                            {/block}
+                        {/embed}
+                    {/block}
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
