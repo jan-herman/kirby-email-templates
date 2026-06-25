@@ -1,5 +1,5 @@
 {parameters
-    string $url,
+    ?string $url,
     string $color = 'primary',
     string $align = 'center',
 }
@@ -13,7 +13,7 @@
                         <table border="0" cellpadding="0" cellspacing="0" role="presentation">
                             <tr>
                                 <td>
-                                    <a href="{$url}" class="button button-{$color}" target="_blank" rel="noopener">{block content}{/block}</a>
+                                    <a href="{$url}" class="button button-{$color}" target="_blank" rel="noopener">{block default}{/block}</a>
                                 </td>
                             </tr>
                         </table>

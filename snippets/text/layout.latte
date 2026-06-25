@@ -1,12 +1,11 @@
-{var $siteTitle = option('jan-herman.email-templates.siteTitle')}
-{var $siteUrl = option('jan-herman.email-templates.siteUrl')}
-{var $siteTitle = is_callable($siteTitle) ? call_user_func($siteTitle) : $siteTitle}
-{var $siteUrl = is_callable($siteUrl) ? call_user_func($siteUrl) : $siteUrl}
+{parameters
+    string $siteTitle = site()->title()->toString(),
+    string $siteUrl = site()->url(),
+}
+
 {block header}
     {embed '@snippets/email/text/header', url: $siteUrl}
-        {block content}
-            {block title}{$siteTitle}{/block}
-        {/block}
+        {$siteTitle}
     {/embed}
 {/block}
 
@@ -16,8 +15,6 @@
 
 {block footer}
     {embed '@snippets/email/text/footer'}
-        {block content}
-            (c) {date('Y')} {$siteTitle}. {t('email.allRightsReserved', 'All rights reserved.')}
-        {/block}
+        &copy; {date('Y')} {$siteTitle}. {_'email.allRightsReserved', fallback: 'All rights reserved.'}
     {/embed}
 {/block}

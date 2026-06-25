@@ -8,13 +8,6 @@ use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 @include_once __DIR__ . '/vendor/autoload.php';
 
 Kirby::plugin('jan-herman/email-templates', [
-    'options' => [
-        'lang'      => fn (): string => kirby()->language()?->code() ?? 'en',
-        'logo'      => '',
-        'siteTitle' => fn (): string => site()->title()->toString(),
-        'siteUrl'   => fn (): string => site()->url(),
-        'theme'     => 'default',
-    ],
     'snippets' => [
         'email/html/button'  => __DIR__ . '/snippets/html/button.latte',
         'email/html/footer'  => __DIR__ . '/snippets/html/footer.latte',

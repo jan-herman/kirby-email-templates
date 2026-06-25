@@ -16,7 +16,7 @@
         "php": "^8.1",
         "getkirby/composer-installer": "^1.2",
         "tijsverkoyen/css-to-inline-styles": "^2.4",
-        "jan-herman/kirby-barista": "^1.14"
+        "jan-herman/kirby-barista": "^1.15"
     },
     "extra": {
         "installer-name": "email-templates"
