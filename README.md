@@ -5,13 +5,13 @@ Reusable Latte email components ported from Laravel's [mail templates](https://g
 ## HTML
 
 ```latte
-{extends '@snippets/email/html/layout'}
-
-{var $lang = 'en'} {* default: kirby()->language()->code() *}
-{var $logo = 'https://example.com/logo.png'} {* default: '' *}
-{var $siteTitle = 'Acme'} {* default: site()->title() *}
-{var $siteUrl = 'https://example.com'} {* default: site()->url() *}
-{var $theme = 'default'} {*  accepts a predefined theme name, an absolute path to a custom CSS file, or a callable that returns either *}
+{extends '@snippets/email/html/layout',
+    lang: 'en' /* default: kirby()->language()->code() */
+    logo: 'https://example.com/logo.png', /* default: '' */
+    siteTitle: 'Acme' /* default: site()->title() */
+    siteUrl: 'https://example.com' /* default: site()->url() */
+    theme: 'default' /*  accepts a predefined theme name, an absolute path to a custom CSS file, or a callable that returns either */
+}
 
 {block content}
     <h1>Welcome!</h1>
